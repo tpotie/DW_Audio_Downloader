@@ -1,4 +1,4 @@
-## DW Audio Downloader 
+## DW German Audio Downloader
 
 This is a supplementary program to help you in your German language studies.
 It is to be used with the (excellent) Deutsche Welle free German Language Learning resources that are found at https://learngerman.dw.com/en/overview
@@ -12,8 +12,10 @@ The pronunciation files can then be used with a supplementary learning aid, such
 ## Requirements
 
 This script uses the following libraries:
-BeautifulSoup (for webscraping)
-requests (for GET requests)
+
+ - BeautifulSoup (for webscraping)
+ - requests (for GET requests)
+ 
 
     $ sudo pip install beautifulsoup4 requests
 
@@ -32,15 +34,16 @@ The script itself is very simple, therefore its usage should be very simple!
     URL 		URL of a vocabulary page from https://learngerman.dw.com (Nico's Weg)  
       
     optional arguments:  
-    -h, 		--help show this help message and exit  
-    -l, 		--list List all available words with audio files from the  
+    -h, 		--help 			show this help message and exit  
+    -l, 		--list 			List all available words with audio files from the  
     given URL  
-    -d, 		--detail Detailed List. Like --list but adds complete text as  
+    -d, 		--detail 		Detailed List. Like --list but adds complete text as  
     well (plural and article)  
-    -w 	WORD, 	--word WORD Download the audio file of the specified word only  
-    -a, 		--all Download all audio files from the vocabulary list
+    -w 	WORD, 	--word WORD 	Download the audio file of the specified word only  
+    -a, 		--all 			Download all audio files from the vocabulary list
 
-Files are downloaded to the directory the script is located in.   
+Files are downloaded to the directory the script is located in. 
+
    
 ## Examples
 
