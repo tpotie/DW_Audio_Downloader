@@ -17,7 +17,7 @@ This script uses the following libraries:
  - requests (for GET requests)
  
 
-    $ sudo pip install beautifulsoup4 requests
+```$ sudo pip install beautifulsoup4 requests```
 
 It has been tested on Linux (should work on Windows / Mac if the requirements are met)
 
