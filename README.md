@@ -10,7 +10,10 @@ The pronunciation files can then be used with a supplementary learning aid, such
 (This script came about because after each chapter I found myself digging through the code so I could get the pronunciation files that were used to teach new words and to add them to my personal German flashcards. This script just saves a bit of time.)
 
 ## Changelog
-V.02:
+V0.2a:
+  - Updated for DW page changes (course list)
+
+V0.2:
   - Added recursive downloading from course list page
   - Added more word cleanups (for irregular cases)
   - Added file check (if it already exists, skip download)

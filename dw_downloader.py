@@ -65,7 +65,8 @@ def parse_course_list(url, args):
                 sectionText = snippet.h2.get_text()
                 seNum, seTitle = sectionText.split(" ", 1)
                 print(seNum+ ". Section: "+seTitle.ljust(36)+'#'*(20))
-                for chaptercode in snippet.find_all(attrs={"data-lesson-id": True}):
+                
+                for chaptercode in snippet.find_all('a', attrs={"data-lesson-id": True}):
                     #chTitle = chaptercode.h3.get_text() # Quote from episode in German (More useful to use the English title given later?)
                     chUrl = chaptercode.get('href')
                     chTitle = chaptercode.find('span', class_='title').get_text()
