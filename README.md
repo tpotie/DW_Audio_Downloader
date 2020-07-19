@@ -10,6 +10,10 @@ The pronunciation files can then be used with a supplementary learning aid, such
 
 ## Changelog
 
+V0.2c:
+
+- Changed all filepaths to use os.path
+
 V0.2b:
 
 - Replaced invalid Window filename chars with valid alternatives
