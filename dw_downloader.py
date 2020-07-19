@@ -114,12 +114,11 @@ def get_save(url, name, args):
     and a name (without extension) to rename
     the file to
     """
+    outFolder = os.path.dirname(os.path.abspath(__file__))
     if (args.output):
-        outFolder = args.output
+        outFolder = os.path.join(outFolder, args.output)
         if not os.path.exists(outFolder):
             os.makedirs(outFolder)
-    else:
-        outFolder = ''
 
     if (name):
         if (os.path == 'nt'):
@@ -129,15 +128,15 @@ def get_save(url, name, args):
         filename = name + "." + ext
     else:
         filename = url.rsplit('/', 1)[1]
-    filename = outFolder + "/" + filename
+    filepath = os.path.join(outFolder, filename)
 
-    if (os.path.isfile(filename)):
-        print("File: "+filename+" already exists. Skipping.")
+    if (os.path.isfile(filepath)):
+        print("File: "+filepath+" already exists. Skipping.")
     else:
         response = get(url)
 
         if response.status_code == codes.ok:
-            open(filename, 'wb').write(response.content)
+            open(filepath, 'wb').write(response.content)
             print("Downloaded: "+name) 
         else:
             raise Exception('Problem downloading file: ' + name)
@@ -158,5 +157,4 @@ def replace_special_chars(name):
     return name
 
 if __name__ == "__main__":
-
     main()
