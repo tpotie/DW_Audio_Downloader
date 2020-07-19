@@ -1,4 +1,4 @@
-## DW German Audio Downloader
+# DW German Audio Downloader
 
 This is a supplementary program to help you in your German language studies.
 It is to be used with the (excellent) Deutsche Welle free German Language Learning resources that are found at https://learngerman.dw.com/en/overview
@@ -6,26 +6,31 @@ It is to be used with the (excellent) Deutsche Welle free German Language Learni
 It has been tested with the Nico's Weg course. It works by being fed the URL of a vocabulary list (that is provided at the end of a section) or a whole course list (eg. course for A1) and provides you with options to download the pronunciation files (which are clear, concise and presented in a regular pattern throughout the course).
 The pronunciation files can then be used with a supplementary learning aid, such as the creation of personal flash cards (using a free program such as Anki).
 
-
 (This script came about because after each chapter I found myself digging through the code so I could get the pronunciation files that were used to teach new words and to add them to my personal German flashcards. This script just saves a bit of time.)
 
 ## Changelog
+
+V0.2b:
+
+- Replaced invalid Window filename chars with valid alternatives
+
 V0.2a:
-  - Updated for DW page changes (course list)
+
+- Updated for DW page changes (course list)
 
 V0.2:
-  - Added recursive downloading from course list page
-  - Added more word cleanups (for irregular cases)
-  - Added file check (if it already exists, skip download)
-  - Added output folder
+
+- Added recursive downloading from course list page
+- Added more word cleanups (for irregular cases)
+- Added file check (if it already exists, skip download)
+- Added output folder
 
 ## Requirements
 
 This script uses the following libraries:
 
- - BeautifulSoup (for webscraping)
- - requests (for GET requests)
- 
+- BeautifulSoup (for webscraping)
+- requests (for GET requests)
 
 ```$ sudo pip install beautifulsoup4 requests```
 
@@ -56,16 +61,15 @@ The script itself is very simple, therefore its usage should be very simple!
                                     recursively download all audio of included lessons
       -o OUTPUT,    --output OUTPUT
                                     Output folder for audio files. If not set, they are
-                                    downloaded to the current directory.
+                                    downloaded to the current directory. 
 
-   
 ## Examples
 
-### List all words 
+### List all words
 
     $ python dw_downloader.py https://learngerman.dw.com/en/wem-geh%C3%B6rt-das/l-37372077/lv -l
-    Ordner 		 
-    ein 	
+    Ordner
+    ein
     eine
     Bestellung
     Jahr  
@@ -79,28 +83,27 @@ The script itself is very simple, therefore its usage should be very simple!
 ### List all words (detailed)
 
     $ python dw_downloader.py https://learngerman.dw.com/en/wem-geh%C3%B6rt-das/l-37372077/lv -d  
-    Ordner 		Ordner, - (m.)  
-    ein 		ein  
-    eine 		eine  
-    Bestellung 	Bestellung, -en (f.)  
-    Jahr 		Jahr, -e (n.)  
-    Wort 		Wort, Wörter (n.)  
-    lernen 		(etwas) lernen  
-    lesen 		(etwas) lesen  
-    Text 		Text, -e (m.)  
-    üben 		(etwas) üben  
-    Pause 		Pause, -n (f.)  
-   
+    Ordner      Ordner, - (m.)  
+    ein         ein  
+    eine        eine  
+    Bestellung  Bestellung, -en (f.)  
+    Jahr        Jahr, -e (n.)  
+    Wort        Wort, Wörter (n.)  
+    lernen      (etwas) lernen  
+    lesen       (etwas) lesen  
+    Text        Text, -e (m.)  
+    üben        (etwas) üben  
+    Pause       Pause, -n (f.)  
+
 ### Download a specific word
 
     $ python dw_downloader.py https://learngerman.dw.com/en/wem-geh%C3%B6rt-d  
     as/l-37372077/lv -w Wort 
     Downloaded: Wort 
 
-	$ python dw_downloader.py https://learngerman.dw.com/en/wem-geh%C3%B6rt-d  
+    $ python dw_downloader.py https://learngerman.dw.com/en/wem-geh%C3%B6rt-d  
     as/l-37372077/lv -w Text 
     Downloaded: Text  
-     
 
 ### Download all words
 
@@ -122,7 +125,7 @@ The script itself is very simple, therefore its usage should be very simple!
 
 All recursive downloads can use the existing switches (eg. --list and --detail)
 
-### Download all audio files from a whole course list (for eg. A1 course) recursively. To specified output folder.
+### Download all audio files from a whole course list (for eg. A1 course) recursively. To specified output folder
 
     $ python dw_downloader.py https://learngerman.dw.com/en/beginners/c-36519789 -ra -o audio_files
     1. Section: Welcome!                            ####################
@@ -143,9 +146,8 @@ All recursive downloads can use the existing switches (eg. --list and --detail)
     Downloaded: Frau
     Downloaded: oder
 
-
 Hope this script proves useful to somebody else!
 
 Happy (German) Language Learning!
- 
+
 Licenced under the GPL v3
