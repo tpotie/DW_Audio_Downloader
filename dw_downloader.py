@@ -19,16 +19,13 @@
 
     This program is not endorsed, sponsored or affiliated with DW (Deutsche Welle) or their partners.    
 """
-# Added recursive downloading from course list page
-# Added more word cleanups (for irregular cases)
-# Added file check (if it already exists, skip download)
-# Added output folder
 
 from requests import get, codes
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse
 import argparse
 import os.path
+import os
 
 # Example url: "https://learngerman.dw.com/en/wem-geh%C3%B6rt-das/l-37372077/lv"
 
@@ -111,10 +108,12 @@ def parse_vocab_list(url, args):
         raise Exception('Problem with specified URL')
 
 
-def get_save(url, name, args) :
-    """Provide the url to download from
+def get_save(url, name, args):
+    """
+    Provide the url to download from
     and a name (without extension) to rename
-    the file to"""
+    the file to
+    """
     if (args.output):
         outFolder = args.output
         if not os.path.exists(outFolder):
@@ -123,6 +122,9 @@ def get_save(url, name, args) :
         outFolder = ''
 
     if (name):
+        if (os.path == 'nt'):
+            name = replace_special_chars(name)
+
         ext = url.rsplit('.', 1)[1]
         filename = name + "." + ext
     else:
@@ -139,6 +141,21 @@ def get_save(url, name, args) :
             print("Downloaded: "+name) 
         else:
             raise Exception('Problem downloading file: ' + name)
+
+def replace_special_chars(name):
+    """
+    Replaces certain invalid Window filename characters to alternatives
+    Reserved Windows characters are listed here: https://docs.microsoft.com/en-us/windows/win32/fileio/naming-a-file
+    Keeping this information in the name is important as it changes the intonation
+    ! is not invalid - however for consistency (with ?) it is changed as well
+    | is often used to indicate a trennbares verb - unfortunately there is no clear alternative that could be used
+    """
+    specialCharMap = {"?": " (Frage)", "!": " (Ausrufe)", "|": ""}
+
+    for char, replacement in specialCharMap.items():
+        name = name.replace(char, replacement);
+
+    return name
 
 if __name__ == "__main__":
 
